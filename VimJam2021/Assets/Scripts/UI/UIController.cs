@@ -26,6 +26,10 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject nextLevelScreen;
     [SerializeField]
+    private GameObject infiniteEndScreen;
+    [SerializeField]
+    private TextMeshProUGUI pointsText;
+    [SerializeField]
     private GameObject shopScreen;
 
     [SerializeField]
@@ -74,6 +78,8 @@ public class UIController : MonoBehaviour
         manager = FindObjectOfType<LevelManager>();
 
         audioManager = FindObjectOfType<AudioManager>();
+
+        if(manager.GetGameMode()) infiniteEndScreen.SetActive(false);
     }
 
     void Update(){
@@ -113,7 +119,11 @@ public class UIController : MonoBehaviour
     }
 
     public void GameOver(){
-        gameOverSCreen.SetActive(true);
+        if(manager.GetGameMode()) gameOverSCreen.SetActive(true);
+        else{
+            infiniteEndScreen.SetActive(true);
+            pointsText.text = "Points: " + manager.GetNumberPoints();
+        }
 
         audioManager.Stop("BossTheme");
         audioManager.Play("DefeatTheme");

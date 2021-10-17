@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Archer : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class Archer : MonoBehaviour
         controller = FindObjectOfType<UIController>();
         manager = FindObjectOfType<LevelManager>();
         audioManager = FindObjectOfType<AudioManager>();
+
+        transform.parent = GameObject.Find("Players").gameObject.transform;
     }
 
     // Update is called once per frame

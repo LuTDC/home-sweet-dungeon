@@ -23,6 +23,10 @@ public class Menu : MonoBehaviour
         Application.Quit();
     }
 
+    public void InfiniteMode(){
+        SceneManager.LoadScene("InfiniteLevel");
+    }
+
     public void playButtonHover(){
         audioManager.Play("ButtonLow");
     }

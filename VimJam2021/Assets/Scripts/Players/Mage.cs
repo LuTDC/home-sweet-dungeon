@@ -31,6 +31,8 @@ public class Mage : MonoBehaviour
         controller = FindObjectOfType<UIController>();
         manager = FindObjectOfType<LevelManager>();
         audioManager = FindObjectOfType<AudioManager>();
+
+        transform.parent = GameObject.Find("Players").gameObject.transform;
     }
 
     // Update is called once per frame
